@@ -8,7 +8,7 @@ Add KerberosBundle to your vendor/bundles/ dir
 
 ::
 
-    $ svn co svn://docgen.rednose.nl/docflow/trunk/RednoseKerberosBundle/ vendor/bundles/Rednose/KerberosBundle
+    $ svn co svn://docgen.rednose.nl:4711/docflow/trunk/RednoseKerberosBundle/src vendor/bundles/Rednose/KerberosBundle
 
 Add the Rednose namespace to your autoloader
 --------------------------------------------
@@ -27,7 +27,6 @@ Add KerberosBundle to your application kernel
 ::
 
     // app/AppKernel.php
-
     public function registerBundles()
     {
         return array(
