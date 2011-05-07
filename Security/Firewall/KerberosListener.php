@@ -1,6 +1,6 @@
 <?php
 
-namespace Rednose\KerberosBundle\Security;
+namespace Rednose\KerberosBundle\Security\Firewall;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
@@ -12,8 +12,9 @@ use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
-class KerberosAuthenticationListener implements ListenerInterface
+class KerberosListener implements ListenerInterface
 {
     protected $logger;
     private $securityContext;
@@ -44,7 +45,7 @@ class KerberosAuthenticationListener implements ListenerInterface
         $user = $this->getTokenUser($request);
 
         if (null !== $token = $this->securityContext->getToken()) {
-            if ($token instanceof KerberosAuthenticationToken && $token->isAuthenticated() && $token->getUsername() === $user) {
+            if ($token instanceof KerberosToken && $token->isAuthenticated() && $token->getUsername() === $user) {
                 return;
             }
         }
@@ -54,7 +55,7 @@ class KerberosAuthenticationListener implements ListenerInterface
         }
 
         try {
-            $token = $this->authenticationManager->authenticate(new KerberosAuthenticationToken($user, $this->providerKey));
+            $token = $this->authenticationManager->authenticate(new KerberosToken($user, $this->providerKey));
 
             if (null !== $this->logger) {
                 $this->logger->debug(sprintf('Authentication success: %s', $token));

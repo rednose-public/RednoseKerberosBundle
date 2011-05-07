@@ -5,12 +5,12 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="security.authentication.provider.kerberos" class="Rednose\KerberosBundle\Security\KerberosAuthenticationProvider" public="false">
+        <service id="security.authentication.provider.kerberos" class="Rednose\KerberosBundle\Security\Authentication\Provider\KerberosProvider" public="false">
             <argument /> <!-- User Provider -->
             <argument type="service" id="security.user_checker" />
         </service>
 
-        <service id="security.authentication.listener.kerberos" class="Rednose\KerberosBundle\Security\KerberosAuthenticationListener" abstract="true">
+        <service id="security.authentication.listener.kerberos" class="Rednose\KerberosBundle\Security\Firewall\KerberosListener" abstract="true">
             <tag name="monolog.logger" channel="security" />
             <argument type="service" id="security.context" />
             <argument type="service" id="security.authentication.manager" />

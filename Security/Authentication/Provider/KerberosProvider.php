@@ -1,16 +1,15 @@
 <?php
 
-namespace Rednose\KerberosBundle\Security;
+namespace Rednose\KerberosBundle\Security\Authentication\Provider;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
+use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
-use Rednose\KerberosBundle\Security\KerberosAuthenticationToken;
-
-class KerberosAuthenticationProvider implements AuthenticationProviderInterface
+class KerberosProvider implements AuthenticationProviderInterface
 {
     private $userProvider;
     private $userChecker;
@@ -47,7 +46,7 @@ class KerberosAuthenticationProvider implements AuthenticationProviderInterface
 
         $this->userChecker->checkPostAuth($user);
 
-        $authenticatedToken = new KerberosAuthenticationToken($user, $this->providerKey, $user->getRoles());
+        $authenticatedToken = new KerberosToken($user, $this->providerKey, $user->getRoles());
         $authenticatedToken->setAttributes($token->getAttributes());
 
         return $authenticatedToken;
@@ -58,6 +57,6 @@ class KerberosAuthenticationProvider implements AuthenticationProviderInterface
      */
     public function supports(TokenInterface $token)
     {
-        return $token instanceof KerberosAuthenticationToken && $this->providerKey === $token->getProviderKey();
+        return $token instanceof KerberosToken && $this->providerKey === $token->getProviderKey();
     }
 }

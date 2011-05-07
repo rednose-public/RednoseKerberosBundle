@@ -1,10 +1,10 @@
 <?php
 
-namespace Rednose\KerberosBundle\Security;
+namespace Rednose\KerberosBundle\Security\Authentication\Token;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
-class KerberosAuthenticationToken extends AbstractToken
+class KerberosToken extends AbstractToken
 {
     private $providerKey;
 
