@@ -76,13 +76,12 @@ class KerberosAuthenticationListener implements ListenerInterface
 
     protected function getTokenUser(Request $request)
     {
-        // XXX Temporary hardcoded user
-        $request->server->set($this->userKey, 'user');
-
         if (!$request->server->has($this->userKey)) {
             throw new BadCredentialsException(sprintf('Kerberos key was not found: %s', $this->userKey));
         }
 
-        return $request->server->get($this->userKey);
+	$user = explode('@', $request->server->get($this->userKey));
+
+        return $user[0];
     }
 }
