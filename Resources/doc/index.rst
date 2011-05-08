@@ -45,7 +45,12 @@ Security configuration
     factories:
         - "%kernel.root_dir%/../vendor/bundles/Rednose/KerberosBundle/Resources/config/security_factories.xml"
 
-     firewalls:
-         secured:
-             pattern:   /secured/.*
-             kerberos: true
+    firewalls:
+        secured:
+            pattern:   /secured/.*
+            kerberos: ~
+
+            # Optional:
+            kerberos:
+                default_user: admin (Custom user override)
+                user_key: REMOTE_USER (Default)

@@ -7,5 +7,3 @@ License:
     Resources/meta/LICENSE
 
 KerberosBundle is a [RedNose](http://www.rednose.nl) initiative.
-
-

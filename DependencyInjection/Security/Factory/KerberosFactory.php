@@ -22,7 +22,8 @@ class KerberosFactory implements SecurityFactoryInterface
         $listenerId = 'security.authentication.listener.kerberos.'.$id;
         $listener = $container->setDefinition($listenerId, new DefinitionDecorator('security.authentication.listener.kerberos'));
         $listener->replaceArgument(2, $id);
-        $listener->replaceArgument(3, $config['user']);
+        $listener->replaceArgument(3, $config['user_key']);
+        $listener->replaceArgument(4, $config['default_user']);
 
         return array($provider, $listenerId, $defaultEntryPoint);
     }
@@ -42,7 +43,8 @@ class KerberosFactory implements SecurityFactoryInterface
         $node
             ->children()
                 ->scalarNode('provider')->end()
-                ->scalarNode('user')->defaultValue('REMOTE_USER')->end()
+                ->scalarNode('user_key')->defaultValue('REMOTE_USER')->end()
+                ->scalarNode('default_user')->end()
             ->end()
         ;
     }

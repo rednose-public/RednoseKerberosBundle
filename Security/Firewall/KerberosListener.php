@@ -22,8 +22,9 @@ class KerberosListener implements ListenerInterface
     private $providerKey;
     private $dispatcher;
     private $userKey;
+    private $defaultUser;
 
-    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, $providerKey, $userKey, LoggerInterface $logger = null, EventDispatcherInterface $dispatcher = null)
+    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, $providerKey, $userKey, $defaultUser = null,  $logger = null, EventDispatcherInterface $dispatcher = null)
     {
         $this->securityContext = $securityContext;
         $this->authenticationManager = $authenticationManager;
@@ -32,6 +33,7 @@ class KerberosListener implements ListenerInterface
         $this->dispatcher = $dispatcher;
 
         $this->userKey = $userKey;
+        $this->defaultUser = $defaultUser;
     }
 
     public final function handle(GetResponseEvent $event)
@@ -77,6 +79,10 @@ class KerberosListener implements ListenerInterface
 
     protected function getTokenUser(Request $request)
     {
+        if (null !== $this->defaultUser) {
+	    return $this->defaultUser;
+        }
+
         if (!$request->server->has($this->userKey)) {
             throw new BadCredentialsException(sprintf('Kerberos key was not found: %s', $this->userKey));
         }

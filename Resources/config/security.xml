@@ -15,7 +15,8 @@
             <argument type="service" id="security.context" />
             <argument type="service" id="security.authentication.manager" />
             <argument /> <!-- Provider-shared Key -->
-            <argument /> <!-- Kerberos user -->
+            <argument /> <!-- User key -->
+            <argument /> <!-- Default User -->
             <argument type="service" id="logger" on-invalid="null" />
             <argument type="service" id="event_dispatcher" on-invalid="null"/>
         </service>
