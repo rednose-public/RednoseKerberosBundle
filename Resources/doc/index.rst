@@ -8,7 +8,7 @@ Add KerberosBundle to your vendor/bundles/ dir
 
 ::
 
-    $ svn co svn://docgen.rednose.nl:4711/docflow/trunk/RednoseKerberosBundle/src vendor/bundles/Rednose/KerberosBundle
+    $ svn co svn://docgen.rednose.nl:4711/docflow/trunk/RednoseKerberosBundle/src src/Rednose/KerberosBundle
 
 Add the Rednose namespace to your autoloader
 --------------------------------------------
@@ -17,7 +17,7 @@ Add the Rednose namespace to your autoloader
 
     // app/autoload.php
     $loader->registerNamespaces(array(
-        'Rednose' => __DIR__.'/../vendor/bundles',
+        'Rednose' => __DIR__.'/../src',
         // your other namespaces
     );
 
@@ -43,7 +43,7 @@ Security configuration
 
     # app/config/security.yml
     factories:
-        - "%kernel.root_dir%/../vendor/bundles/Rednose/KerberosBundle/Resources/config/security_factories.xml"
+        - "%kernel.root_dir%/../src/Rednose/KerberosBundle/Resources/config/security_factories.xml"
 
     firewalls:
         secured:
