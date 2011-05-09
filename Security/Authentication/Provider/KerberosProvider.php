@@ -18,11 +18,16 @@ class KerberosProvider implements AuthenticationProviderInterface
     /**
      * Constructor.
      *
-     * @param UserProviderInterface $userProvider An UserProviderInterface instance
-     * @param UserCheckerInterface  $userChecker  An UserCheckerInterface instance
-     * @param string                $providerKey  The provider key
+     * @param UserProviderInterface $userProvider
+     *   A UserProviderInterface instance
+     * @param UserCheckerInterface $userChecker
+     *   A UserCheckerInterface instance
+     * @param string $providerKey 
+     *   The provider key
      */
-    public function __construct(UserProviderInterface $userProvider, UserCheckerInterface $userChecker, $providerKey)
+    public function __construct(UserProviderInterface $userProvider,
+                                UserCheckerInterface $userChecker,
+                                $providerKey)
     {
         $this->userProvider = $userProvider;
         $this->userChecker = $userChecker;
