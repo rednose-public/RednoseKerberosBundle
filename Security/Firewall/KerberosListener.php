@@ -2,17 +2,20 @@
 
 namespace Rednose\KerberosBundle\Security\Firewall;
 
-use Symfony\Component\Security\Core\SecurityContextInterface;
-use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
-use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-use Symfony\Component\HttpKernel\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Http\Events;
-use Symfony\Component\Security\Core\Exception\BadCredentialsException;
-use Symfony\Component\Security\Http\Firewall\ListenerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
+use 
+    Symfony\Component\Security\Core\SecurityContextInterface,
+    Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface,
+    Symfony\Component\Security\Http\Event\InteractiveLoginEvent,
+    Symfony\Component\HttpKernel\Log\LoggerInterface,
+    Symfony\Component\HttpFoundation\Request,
+    Symfony\Component\Security\Http\Events,
+    Symfony\Component\Security\Core\Exception\BadCredentialsException,
+    Symfony\Component\Security\Http\Firewall\ListenerInterface,
+    Symfony\Component\EventDispatcher\EventDispatcherInterface,
+    Symfony\Component\HttpKernel\Event\GetResponseEvent;
+
+use
+    Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 class KerberosListener implements ListenerInterface
 {
@@ -24,7 +27,13 @@ class KerberosListener implements ListenerInterface
     private $userKey;
     private $defaultUser;
 
-    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, $providerKey, $userKey, $defaultUser = null,  $logger = null, EventDispatcherInterface $dispatcher = null)
+    public function __construct(SecurityContextInterface $securityContext,
+                                AuthenticationManagerInterface $authenticationManager,
+                                $providerKey,
+                                $userKey,
+                                $defaultUser = null,
+                                $logger = null,
+                                EventDispatcherInterface $dispatcher = null)
     {
         $this->securityContext = $securityContext;
         $this->authenticationManager = $authenticationManager;
@@ -57,7 +66,9 @@ class KerberosListener implements ListenerInterface
         }
 
         try {
-            $token = $this->authenticationManager->authenticate(new KerberosToken($user, $this->providerKey));
+            $token = $this->authenticationManager->authenticate(
+                    new KerberosToken($user, $this->providerKey)
+                );
 
             if (null !== $this->logger) {
                 $this->logger->debug(sprintf('Authentication success: %s', $token));
@@ -68,7 +79,9 @@ class KerberosListener implements ListenerInterface
                 $loginEvent = new InteractiveLoginEvent($request, $token);
                 $this->dispatcher->dispatch(Events::onSecurityInteractiveLogin, $loginEvent);
             }
-        } catch (AuthenticationException $failed) {
+        }
+        catch (AuthenticationException $failed)
+        {
             $this->securityContext->setToken(null);
 
             if (null !== $this->logger) {
@@ -87,7 +100,7 @@ class KerberosListener implements ListenerInterface
             throw new BadCredentialsException(sprintf('Kerberos key was not found: %s', $this->userKey));
         }
 
-	$user = explode('@', $request->server->get($this->userKey));
+	    $user = explode('@', $request->server->get($this->userKey));
 
         return $user[0];
     }
