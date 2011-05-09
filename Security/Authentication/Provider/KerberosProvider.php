@@ -2,12 +2,15 @@
 
 namespace Rednose\KerberosBundle\Security\Authentication\Provider;
 
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Core\User\UserCheckerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
-use Symfony\Component\Security\Core\Exception\BadCredentialsException;
-use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
+use
+    Symfony\Component\Security\Core\User\UserProviderInterface,
+    Symfony\Component\Security\Core\User\UserCheckerInterface,
+    Symfony\Component\Security\Core\Authentication\Token\TokenInterface,
+    Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface,
+    Symfony\Component\Security\Core\Exception\BadCredentialsException;
+
+use
+    Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 class KerberosProvider implements AuthenticationProviderInterface
 {
@@ -34,17 +37,20 @@ class KerberosProvider implements AuthenticationProviderInterface
         $this->providerKey = $providerKey;
     }
 
-     /**
-      * {@inheritdoc}
-      */
-     public function authenticate(TokenInterface $token)
-     {
-         if (!$this->supports($token)) {
-             return null;
-         }
+    /**
+     * {@inheritdoc}
+     */
+    public function authenticate(TokenInterface $token)
+    {
+        if (!$this->supports($token))
+        {
+            return null;
+        }
 
-        if (!$user = $token->getUser()) {
-            throw new BadCredentialsException('No pre-authenticated principal found in request.');
+        if (!$user = $token->getUser())
+        {
+            throw new BadCredentialsException(
+                'No pre-authenticated principal found in request.');
         }
 
         $user = $this->userProvider->loadUserByUsername($user);
@@ -62,6 +68,8 @@ class KerberosProvider implements AuthenticationProviderInterface
      */
     public function supports(TokenInterface $token)
     {
-        return $token instanceof KerberosToken && $this->providerKey === $token->getProviderKey();
+        return 
+            $token instanceof KerberosToken &&
+            $this->providerKey === $token->getProviderKey();
     }
 }

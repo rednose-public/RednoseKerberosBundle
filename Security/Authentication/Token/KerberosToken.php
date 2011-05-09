@@ -33,5 +33,4 @@ class KerberosToken extends AbstractToken
     {
         return $this->providerKey;
     }
-
 }

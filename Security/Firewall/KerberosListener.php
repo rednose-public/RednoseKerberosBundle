@@ -49,33 +49,44 @@ class KerberosListener implements ListenerInterface
     {
         $request = $event->getRequest();
 
-        if (null !== $this->logger) {
-            $this->logger->debug(sprintf('Checking secure context token: %s', $this->securityContext->getToken()));
+        if (null !== $this->logger)
+        {
+            $this->logger->debug(sprintf(
+                'Checking secure context token: %s',
+                $this->securityContext->getToken()));
         }
 
         $user = $this->getTokenUser($request);
 
-        if (null !== $token = $this->securityContext->getToken()) {
-            if ($token instanceof KerberosToken && $token->isAuthenticated() && $token->getUsername() === $user) {
+        if (null !== $token = $this->securityContext->getToken())
+        {
+            if ($token instanceof KerberosToken &&
+                $token->isAuthenticated() &&
+                $token->getUsername() === $user)
+            {
                 return;
             }
         }
 
-        if (null !== $this->logger) {
+        if (null !== $this->logger)
+        {
             $this->logger->debug(sprintf('Trying to pre-authenticate user "%s"', $user));
         }
 
-        try {
+        try
+        {
             $token = $this->authenticationManager->authenticate(
                     new KerberosToken($user, $this->providerKey)
                 );
 
-            if (null !== $this->logger) {
+            if (null !== $this->logger)
+            {
                 $this->logger->debug(sprintf('Authentication success: %s', $token));
             }
             $this->securityContext->setToken($token);
 
-            if (null !== $this->dispatcher) {
+            if (null !== $this->dispatcher)
+            {
                 $loginEvent = new InteractiveLoginEvent($request, $token);
                 $this->dispatcher->dispatch(Events::onSecurityInteractiveLogin, $loginEvent);
             }
@@ -85,7 +96,9 @@ class KerberosListener implements ListenerInterface
             $this->securityContext->setToken(null);
 
             if (null !== $this->logger) {
-                $this->logger->debug(sprintf("Cleared security context due to exception: %s", $failed->getMessage()));
+                $this->logger->debug(sprintf(
+                    "Cleared security context due to exception: %s",
+                    $failed->getMessage()));
             }
         }
     }
@@ -93,14 +106,15 @@ class KerberosListener implements ListenerInterface
     protected function getTokenUser(Request $request)
     {
         if (null !== $this->defaultUser) {
-	    return $this->defaultUser;
+            return $this->defaultUser;
         }
 
         if (!$request->server->has($this->userKey)) {
-            throw new BadCredentialsException(sprintf('Kerberos key was not found: %s', $this->userKey));
+            throw new BadCredentialsException(sprintf(
+                'Kerberos key was not found: %s', $this->userKey));
         }
 
-	    $user = explode('@', $request->server->get($this->userKey));
+        $user = explode('@', $request->server->get($this->userKey));
 
         return $user[0];
     }
