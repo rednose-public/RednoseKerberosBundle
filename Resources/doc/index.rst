@@ -42,15 +42,16 @@ Security configuration
 ::
 
     # app/config/security.yml
-    factories:
-        - "%kernel.root_dir%/../src/Rednose/KerberosBundle/Resources/config/security_factories.xml"
+    security:
+        factories:
+            - "%kernel.root_dir%/../src/Rednose/KerberosBundle/Resources/config/security_factories.xml"
 
-    firewalls:
-        secured:
-            pattern:   /secured/.*
-            kerberos: ~
+        firewalls:
+            secured:
+                pattern:   /secured/.*
+                kerberos: ~
 
-            # Optional:
-            kerberos:
-                default_user: admin (Custom user override)
-                user_key: REMOTE_USER (Default)
+                # Optional:
+                kerberos:
+                    default_user: admin (Custom user override)
+                    user_key: REMOTE_USER (Default)
