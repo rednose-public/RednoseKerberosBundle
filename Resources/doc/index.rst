@@ -3,7 +3,7 @@ Provides Kerberos authentication for your Symfony2 Project.
 Installation
 ============
 
-Add KerberosBundle to your vendor/bundles/ dir
+Add KerberosBundle to your src/ dir
 ----------------------------------------------
 
 ::
