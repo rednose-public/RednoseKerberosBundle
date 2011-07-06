@@ -2,30 +2,27 @@
 
 namespace Rednose\KerberosBundle\Security\Firewall;
 
-use 
-    Symfony\Component\Security\Core\SecurityContextInterface,
-    Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface,
-    Symfony\Component\Security\Http\Event\InteractiveLoginEvent,
-    Symfony\Component\HttpKernel\Log\LoggerInterface,
-    Symfony\Component\HttpFoundation\Request,
-    Symfony\Component\Security\Http\Events,
-    Symfony\Component\Security\Core\Exception\BadCredentialsException,
-    Symfony\Component\Security\Http\Firewall\ListenerInterface,
-    Symfony\Component\EventDispatcher\EventDispatcherInterface,
-    Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
+use Symfony\Component\Security\Http\Firewall\ListenerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Security\Http\SecurityEvents;
 
-use
-    Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
+use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 class KerberosListener implements ListenerInterface
 {
     protected $logger;
-    private $securityContext;
-    private $authenticationManager;
-    private $providerKey;
-    private $dispatcher;
-    private $userKey;
-    private $defaultUser;
+    protected $securityContext;
+    protected $authenticationManager;
+    protected $providerKey;
+    protected $dispatcher;
+    protected $userKey;
+    protected $defaultUser;
 
     public function __construct(SecurityContextInterface $securityContext,
                                 AuthenticationManagerInterface $authenticationManager,
@@ -88,7 +85,7 @@ class KerberosListener implements ListenerInterface
             if (null !== $this->dispatcher)
             {
                 $loginEvent = new InteractiveLoginEvent($request, $token);
-                $this->dispatcher->dispatch(Events::onSecurityInteractiveLogin, $loginEvent);
+                $this->dispatcher->dispatch('onSecurityInteractiveLogin', $loginEvent);
             }
         }
         catch (AuthenticationException $failed)
