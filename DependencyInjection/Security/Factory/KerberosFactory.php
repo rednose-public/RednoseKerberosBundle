@@ -2,12 +2,11 @@
 
 namespace Rednose\KerberosBundle\DependencyInjection\Security\Factory;
 
-use
-    Symfony\Component\Config\Definition\Builder\NodeDefinition,
-    Symfony\Component\DependencyInjection\DefinitionDecorator,
-    Symfony\Component\DependencyInjection\ContainerBuilder,
-    Symfony\Component\DependencyInjection\Reference,
-    Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\DependencyInjection\DefinitionDecorator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
 
 class KerberosFactory implements SecurityFactoryInterface
 {
@@ -17,8 +16,7 @@ class KerberosFactory implements SecurityFactoryInterface
         $container
             ->setDefinition($provider, new DefinitionDecorator('security.authentication.provider.kerberos'))
             ->replaceArgument(0, new Reference($userProvider))
-            ->addArgument($id)
-        ;
+            ->addArgument($id);
 
         $listenerId = 'security.authentication.listener.kerberos.'.$id;
         $listener = $container->setDefinition($listenerId, new DefinitionDecorator('security.authentication.listener.kerberos'));

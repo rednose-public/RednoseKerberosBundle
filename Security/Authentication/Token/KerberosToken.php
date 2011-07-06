@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
 class KerberosToken extends AbstractToken
 {
-    private $providerKey;
+    protected $providerKey;
 
     public function __construct($user, $providerKey = null, array $roles = array())
     {
