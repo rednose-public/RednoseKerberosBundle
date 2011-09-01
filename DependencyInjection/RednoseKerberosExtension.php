@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-class RednoseKerberosExtension extends Extension
+class LibbitKerberosExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
