@@ -7,7 +7,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * Main bundle class.
  */
-class RednoseKerberosBundle extends Bundle
+class LibbitKerberosBundle extends Bundle
 {
-    // Intentionally left empty.
 }
