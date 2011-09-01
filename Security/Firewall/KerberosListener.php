@@ -1,6 +1,6 @@
 <?php
 
-namespace Rednose\KerberosBundle\Security\Firewall;
+namespace Libbit\KerberosBundle\Security\Firewall;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 
-use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
+use Libbit\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 class KerberosListener implements ListenerInterface
 {

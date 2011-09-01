@@ -1,6 +1,6 @@
 <?php
 
-namespace Rednose\KerberosBundle\Security\Authentication\Provider;
+namespace Libbit\KerberosBundle\Security\Authentication\Provider;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 
-use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
+use Libbit\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 class KerberosProvider implements AuthenticationProviderInterface
 {

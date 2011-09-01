@@ -1,6 +1,6 @@
 <?php
 
-namespace Rednose\KerberosBundle\Security\Authentication\Token;
+namespace Libbit\KerberosBundle\Security\Authentication\Token;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 

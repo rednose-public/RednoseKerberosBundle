@@ -1,6 +1,6 @@
 <?php
 
-namespace Rednose\KerberosBundle\DependencyInjection\Security\Factory;
+namespace Libbit\KerberosBundle\DependencyInjection\Security\Factory;
 
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;

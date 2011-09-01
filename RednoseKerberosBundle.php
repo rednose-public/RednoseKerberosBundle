@@ -1,6 +1,6 @@
 <?php
 
-namespace Rednose\KerberosBundle;
+namespace Libbit\KerberosBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

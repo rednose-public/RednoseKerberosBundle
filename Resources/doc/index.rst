@@ -8,7 +8,7 @@ Add KerberosBundle to your src/ dir
 
 ::
 
-    $ svn co svn://docgen.rednose.nl:4711/docflow/trunk/RednoseKerberosBundle/src src/Rednose/KerberosBundle
+    $ git clone gitolite@blowdryer.local:LibbitKerberosBundle src/Libbit/KerberosBundle
 
 Add the Rednose namespace to your autoloader
 --------------------------------------------
@@ -31,7 +31,7 @@ Add KerberosBundle to your application kernel
     {
         return array(
             // ...
-            new Rednose\KerberosBundle\RednoseKerberosBundle(),
+            new Libbit\KerberosBundle\RednoseKerberosBundle(),
             // ...
         );
     }
