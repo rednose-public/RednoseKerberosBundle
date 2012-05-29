@@ -1,29 +1,32 @@
 <?php
+
 /*
- * Copyright (c) 2011 RedNose <info@rednose.nl>
- * 
- * Licensed under the EUPL, Version 1.1 or - as soon they will be approved by
- * the European Commission - subsequent versions of the EUPL (the "Licence");
- * You may not use this work except in compliance with the Licence. You may
- * obtain a copy of the Licence at:
- * 
- * http://www.osor.eu/eupl
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the Licence is distributed on an "AS IS" basis, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * Licence for the specific language governing permissions and limitations
- * under the Licence.
+ * This file is part of the LibbitFlowgenBundle package.
+ *
+ * (c) RedNose <info@rednose.nl>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Libbit\KerberosBundle\Security\Authentication\Token;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
+/**
+ * The token handling the Kerberos authentication.
+ */
 class KerberosToken extends AbstractToken
 {
     protected $providerKey;
 
+    /**
+     * Constructor.
+     *
+     * @param mixed $user        The user object.
+     * @param mixed $providerKey The provider key.
+     * @param array $roles       The roles to assign.
+     */
     public function __construct($user, $providerKey = null, array $roles = array())
     {
         parent::__construct($roles);
@@ -40,11 +43,17 @@ class KerberosToken extends AbstractToken
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getCredentials()
     {
         return null;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getProviderKey()
     {
         return $this->providerKey;

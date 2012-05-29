@@ -1,19 +1,12 @@
 <?php
+
 /*
- * Copyright (c) 2011 RedNose <info@rednose.nl>
- * 
- * Licensed under the EUPL, Version 1.1 or - as soon they will be approved by
- * the European Commission - subsequent versions of the EUPL (the "Licence");
- * You may not use this work except in compliance with the Licence. You may
- * obtain a copy of the Licence at:
- * 
- * http://www.osor.eu/eupl
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the Licence is distributed on an "AS IS" basis, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * Licence for the specific language governing permissions and limitations
- * under the Licence.
+ * This file is part of the LibbitFlowgenBundle package.
+ *
+ * (c) RedNose <info@rednose.nl>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Libbit\KerberosBundle\DependencyInjection\Security\Factory;
@@ -24,8 +17,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
 
+/**
+ * Factory class to dynamically inject the required services into the dependency injection container.
+ */
 class KerberosFactory implements SecurityFactoryInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint)
     {
         $provider = 'security.authentication.provider.kerberos.'.$id;
@@ -43,16 +42,25 @@ class KerberosFactory implements SecurityFactoryInterface
         return array($provider, $listenerId, $defaultEntryPoint);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getPosition()
     {
         return 'pre_auth';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getKey()
     {
         return 'kerberos';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function addConfiguration(NodeDefinition $node)
     {
         $node
@@ -60,7 +68,6 @@ class KerberosFactory implements SecurityFactoryInterface
                 ->scalarNode('provider')->end()
                 ->scalarNode('user_key')->defaultValue('REMOTE_USER')->end()
                 ->scalarNode('default_user')->end()
-            ->end()
-        ;
+            ->end();
     }
 }
