@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LibbitFlowgenBundle package.
+ * This file is part of the LibbitKerberosBundle package.
  *
  * (c) RedNose <info@rednose.nl>
  *
