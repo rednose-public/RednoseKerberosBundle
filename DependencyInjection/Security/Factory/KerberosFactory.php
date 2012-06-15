@@ -33,6 +33,10 @@ class KerberosFactory implements SecurityFactoryInterface
             ->replaceArgument(0, new Reference($userProvider))
             ->addArgument($id);
 
+        if (!isset($config['default_user'])) {
+            $config['default_user'] = null;
+        }
+
         $listenerId = 'security.authentication.listener.kerberos.'.$id;
         $listener = $container->setDefinition($listenerId, new DefinitionDecorator('security.authentication.listener.kerberos'));
         $listener->replaceArgument(2, $id);
