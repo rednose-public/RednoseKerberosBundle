@@ -55,12 +55,8 @@ class KerberosProvider implements AuthenticationProviderInterface
         if (!$user = $token->getUser()) {
             throw new BadCredentialsException('No pre-authenticated principal found in request.');
         }
-
+	 
         $user = $this->userProvider->loadUserByUsername($user);
-
-        if (method_exists($user, 'setLastLogin')) {
-            $user->setLastLogin(new \DateTime);
-        }
 
         $this->userChecker->checkPostAuth($user);
 

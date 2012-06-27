@@ -19,6 +19,7 @@ use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Security\Http\SecurityEvents;
 use Libbit\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 /**
@@ -97,7 +98,7 @@ class KerberosListener implements ListenerInterface
 
             if (null !== $this->dispatcher) {
                 $loginEvent = new InteractiveLoginEvent($request, $token);
-                $this->dispatcher->dispatch('onSecurityInteractiveLogin', $loginEvent);
+                $this->dispatcher->dispatch(SecurityEvents::INTERACTIVE_LOGIN, $loginEvent);
             }
         } catch (AuthenticationException $failed) {
             $this->securityContext->setToken(null);
