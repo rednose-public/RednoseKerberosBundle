@@ -58,6 +58,10 @@ class KerberosProvider implements AuthenticationProviderInterface
 
         $user = $this->userProvider->loadUserByUsername($user);
 
+        if (method_exists($user, 'setLastLogin')) {
+            $user->setLastLogin(new \DateTime);
+        }
+
         $this->userChecker->checkPostAuth($user);
 
         $authenticatedToken = new KerberosToken($user, $this->providerKey, $user->getRoles());
