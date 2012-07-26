@@ -2,7 +2,7 @@
     "name": "libbit/keberos-bundle",
     "type": "symfony-bundle",
     "description": "Symfony LibbitKerberosBundle",
-    "keywords": ["kerbers"],
+    "keywords": ["kerberos"],
     "homepage": "http://www.libbit.eu",
     "license": "EUPL",
     "authors": [
