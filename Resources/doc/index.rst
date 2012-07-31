@@ -8,7 +8,7 @@ Add KerberosBundle to your src/ dir
 
 ::
 
-    $ git clone gitolite@blowdryer.local:LibbitKerberosBundle src/Libbit/KerberosBundle
+    $ git clone git@gitorious.rednose.nl:libbitkerberosbundle src/Libbit/KerberosBundle
 
 
 Add KerberosBundle to your application kernel
