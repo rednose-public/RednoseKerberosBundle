@@ -27,7 +27,7 @@ class KerberosToken extends AbstractToken
      * @param mixed $providerKey The provider key.
      * @param array $roles       The roles to assign.
      */
-    public function __construct($user, $providerKey = null, array $roles = array())
+    public function __construct($user, $providerKey, array $roles = array())
     {
         parent::__construct($roles);
 
