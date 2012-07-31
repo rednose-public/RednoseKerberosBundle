@@ -27,7 +27,7 @@ class KerberosTokenTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        //$this->object = new KerberosToken(null, 'test');
+        $this->object = new KerberosToken($this->getUser(), 'testKey');
     }
 
     /**
@@ -51,33 +51,27 @@ class KerberosTokenTest extends \PHPUnit_Framework_TestCase
      */
     public function testTokenWithoutProviderKey()
     {
-        $user = new \Symfony\Component\Security\Core\User\User('test', 'test');
-
-        new KerberosToken($user, null);
+        new KerberosToken($this->getUser(), null);
     }
 
     /**
      * @covers Libbit\KerberosBundle\Security\Authentication\Token\KerberosToken::getCredentials
-     * @todo   Implement testGetCredentials().
      */
     public function testGetCredentials()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertEquals(null, $this->object->getCredentials());
     }
 
     /**
      * @covers Libbit\KerberosBundle\Security\Authentication\Token\KerberosToken::getProviderKey
-     * @todo   Implement testGetProviderKey().
      */
     public function testGetProviderKey()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertEquals('testKey', $this->object->getKey());
     }
 
+    protected function getUser()
+    {
+        return new \Symfony\Component\Security\Core\User\User('username', 'password');
+    }
 }
