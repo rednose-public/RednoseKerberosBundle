@@ -67,7 +67,7 @@ class KerberosTokenTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetProviderKey()
     {
-        $this->assertEquals('testKey', $this->object->getKey());
+        $this->assertEquals('testKey', $this->object->getProviderKey());
     }
 
     protected function getUser()
