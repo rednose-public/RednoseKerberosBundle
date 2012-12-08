@@ -4,7 +4,7 @@
     "description": "Symfony LibbitKerberosBundle",
     "keywords": ["kerberos"],
     "homepage": "http://www.libbit.eu",
-    "license": "EUPL",
+    "license": "EUPL-1.1",
     "authors": [
         {
             "name": "Marc Bontje",
