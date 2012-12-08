@@ -9,12 +9,12 @@
         {
             "name": "Marc Bontje",
             "email": "marc@rednose.nl",
-            "homepage": "www.rednose.nl"
+            "homepage": "http://www.rednose.nl"
         },
         {
             "name": "Sven Hagemann",
             "email": "sven@rednose.nl",
-            "homepage": "www.rednose.nl"
+            "homepage": "http://www.rednose.nl"
         }
     ],
     "minimum-stability": "dev",
