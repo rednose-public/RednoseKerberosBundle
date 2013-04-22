@@ -12,6 +12,9 @@
 namespace Libbit\KerberosBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+use Libbit\KerberosBundle\DependencyInjection\Security\Factory\KerberosFactory;
 
 /**
  * Main bundle class.
@@ -20,4 +23,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class LibbitKerberosBundle extends Bundle
 {
+      public function build(ContainerBuilder $container)
+      {
+          parent::build($container);
+
+          $extension = $container->getExtension('security');
+          $extension->addSecurityListenerFactory(new KerberosFactory());
+      }
 }

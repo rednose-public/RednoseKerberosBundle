@@ -33,9 +33,6 @@ Security configuration
 
     # app/config/security.yml
     security:
-        factories:
-            - "%kernel.root_dir%/../src/Libbit/KerberosBundle/Resources/config/security_factories.xml"
-
         firewalls:
             secured:
                 pattern:   /secured/.*
