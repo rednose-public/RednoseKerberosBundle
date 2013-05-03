@@ -76,10 +76,10 @@ class KerberosListener implements ListenerInterface
                 $this->securityContext->getToken()));
         }
 
-        $user = strtolower($this->getTokenUser($request));
+        $user = $this->getTokenUser($request);
 
         if (null !== $token = $this->securityContext->getToken()) {
-            if ($token instanceof KerberosToken && $token->isAuthenticated() && strtolower($token->getUsername()) === $user) {
+            if ($token instanceof KerberosToken && $token->isAuthenticated() && strtolower($token->getUsername()) === strtolower($user)) {
                 return;
             }
         }
