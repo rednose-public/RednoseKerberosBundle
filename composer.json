@@ -1,9 +1,9 @@
 {
-    "name": "libbit/keberos-bundle",
+    "name": "rednose/keberos-bundle",
     "type": "symfony-bundle",
     "description": "Symfony LibbitKerberosBundle",
     "keywords": ["kerberos"],
-    "homepage": "http://www.libbit.eu",
+    "homepage": "http://www.rednose.nl",
     "license": "EUPL-1.1",
     "authors": [
         {
