@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LibbitKerberosBundle package.
+ * This file is part of the RednosetKerberosBundle package.
  *
  * (c) RedNose <info@rednose.nl>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Libbit\KerberosBundle\DependencyInjection;
+namespace Rednose\KerberosBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -19,7 +19,7 @@ use Symfony\Component\Config\FileLocator;
 /**
  * Load the basic config files into the dependency injection container.
  */
-class LibbitKerberosExtension extends Extension
+class RednoseKerberosExtension extends Extension
 {
     /**
      * {@inheritdoc}

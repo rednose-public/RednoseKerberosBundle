@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LibbitKerberosBundle package.
+ * This file is part of the RednoseKerberosBundle package.
  *
  * (c) RedNose <info@rednose.nl>
  *
@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Libbit\KerberosBundle;
+namespace Rednose\KerberosBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-use Libbit\KerberosBundle\DependencyInjection\Security\Factory\KerberosFactory;
+use Rednose\KerberosBundle\DependencyInjection\Security\Factory\KerberosFactory;
 
 /**
  * Main bundle class.
  *
  * @author Marc Bontje <marc@rednose.nl>
  */
-class LibbitKerberosBundle extends Bundle
+class RednoseKerberosBundle extends Bundle
 {
       public function build(ContainerBuilder $container)
       {
