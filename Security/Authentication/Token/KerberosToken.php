@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LibbitKerberosBundle package.
+ * This file is part of the RednoseKerberosBundle package.
  *
  * (c) RedNose <info@rednose.nl>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Libbit\KerberosBundle\Security\Authentication\Token;
+namespace Rednose\KerberosBundle\Security\Authentication\Token;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 

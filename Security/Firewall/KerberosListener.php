@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LibbitKerberosBundle package.
+ * This file is part of the RednoseKerberosBundle package.
  *
  * (c) RedNose <info@rednose.nl>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Libbit\KerberosBundle\Security\Firewall;
+namespace Rednose\KerberosBundle\Security\Firewall;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
@@ -20,7 +20,7 @@ use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
-use Libbit\KerberosBundle\Security\Authentication\Token\KerberosToken;
+use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 /**
  * Hooks into the Symfony firewall.

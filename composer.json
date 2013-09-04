@@ -1,7 +1,7 @@
 {
     "name": "rednose/keberos-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony LibbitKerberosBundle",
+    "description": "Symfony RednoseKerberosBundle",
     "keywords": ["kerberos"],
     "homepage": "http://www.rednose.nl",
     "license": "EUPL-1.1",
@@ -31,7 +31,7 @@
         "symfony/security-bundle": "2.0.*"
     },
     "autoload": {
-        "psr-0": { "Libbit\\KerberosBundle": "" }
+        "psr-0": { "Rednose\\KerberosBundle": "" }
     },
-    "target-dir": "Libbit/KerberosBundle"
+    "target-dir": "Rednose/KerberosBundle"
 }

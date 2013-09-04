@@ -1,10 +1,8 @@
 <?php
 
-namespace Libbit\KerberosBundle\Tests\Security\Authentication\Provider;
+namespace Rednose\KerberosBundle\Tests\Security\Authentication\Provider;
 
-namespace Libbit\KerberosBundle\Security\Authentication\Provider\KerberosProvider;
-
-use Libbit\KerberosBundle\Security\Authentication\Provider\KerberosProvider;
+use Rednose\KerberosBundle\Security\Authentication\Provider\KerberosProvider;
 
 class KerberosProviderTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +11,7 @@ class KerberosProviderTest extends \PHPUnit_Framework_TestCase
         $userProvider = $this->getUserProvider();
         $userChecker = $this->getUserChecker();
 
-        $provider = $this->getMock('Libbit\KerberosBundle\Security\Authentication\Provider\KerberosProvider', array('supports'), array($userProvider, $userChecker, 'kerberos'));
+        $provider = $this->getMock('Rednose\KerberosBundle\Security\Authentication\Provider\KerberosProvider', array('supports'), array($userProvider, $userChecker, 'kerberos'));
 
         $provider
             ->expects($this->once())

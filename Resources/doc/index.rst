@@ -3,14 +3,6 @@ Provides Kerberos authentication for your Symfony2 Project.
 Installation
 ============
 
-Add KerberosBundle to your src/ dir
-----------------------------------------------
-
-::
-
-    $ git clone git@gitorious.rednose.nl:libbitkerberosbundle src/Libbit/KerberosBundle
-
-
 Add KerberosBundle to your application kernel
 ---------------------------------------------
 
@@ -21,7 +13,7 @@ Add KerberosBundle to your application kernel
     {
         return array(
             // ...
-            new Libbit\KerberosBundle\LibbitKerberosBundle(),
+            new Rednose\KerberosBundle\RednoseKerberosBundle(),
             // ...
         );
     }

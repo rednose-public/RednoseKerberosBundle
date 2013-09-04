@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LibbitKerberosBundle package.
+ * This file is part of the RednoseKerberosBundle package.
  *
  * (c) RedNose <info@rednose.nl>
  *
@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Libbit\KerberosBundle\Security\Authentication\Provider;
+namespace Rednose\KerberosBundle\Security\Authentication\Provider;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
-use Libbit\KerberosBundle\Security\Authentication\Token\KerberosToken;
+use Rednose\KerberosBundle\Security\Authentication\Token\KerberosToken;
 
 /**
  * The authentication provider.

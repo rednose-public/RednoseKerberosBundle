@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LibbitKerberosBundle package.
+ * This file is part of the RednoseKerberosBundle package.
  *
  * (c) RedNose <info@rednose.nl>
  *
