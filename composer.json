@@ -1,5 +1,5 @@
 {
-    "name": "rednose/keberos-bundle",
+    "name": "rednose/kerberos-bundle",
     "type": "symfony-bundle",
     "description": "Symfony RednoseKerberosBundle",
     "keywords": ["kerberos"],
