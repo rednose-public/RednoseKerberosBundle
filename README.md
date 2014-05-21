@@ -1,8 +1,6 @@
 RednoseKerberosBundle
 =====================
 
-**Caution**: This bundle Requires Symfony 2.3.x. or higher.
-
 ## Documentation
 
 The bulk of the documentation is stored in the `Resources/doc/index.rst` file in this bundle:
