@@ -1,4 +1,4 @@
-RednoseKerberosBundle
+RednoseKerberosBundle [![Build status...](https://secure.travis-ci.org/rednose-public/RednoseKerberosBundle.png?branch=master)](http://travis-ci.org/rednose-public/RednoseKerberosBundle)
 =====================
 
 ## Documentation

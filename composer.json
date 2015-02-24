@@ -27,5 +27,10 @@
     "autoload": {
         "psr-0": { "Rednose\\KerberosBundle": "" }
     },
-    "target-dir": "Rednose/KerberosBundle"
+    "target-dir": "Rednose/KerberosBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
