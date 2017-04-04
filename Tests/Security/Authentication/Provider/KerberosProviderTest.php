@@ -11,8 +11,6 @@
 
 namespace Rednose\KerberosBundle\Tests\Security\Authentication\Provider;
 
-use Rednose\KerberosBundle\Security\Authentication\Provider\KerberosProvider;
-
 class KerberosProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function testAuthenticate()

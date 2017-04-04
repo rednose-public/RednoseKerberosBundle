@@ -11,7 +11,8 @@
 
 namespace Rednose\KerberosBundle\Security\Firewall;
 
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,15 +45,16 @@ class KerberosListener implements ListenerInterface
     /**
      * Constructor.
      *
-     * @param SecurityContextInterface       $securityContext       The security context object.
+     * @param TokenStorageInterface          $securityContext       The security context object.
      * @param AuthenticationManagerInterface $authenticationManager The authentication manager.
      * @param mixed                          $providerKey           The provider key.
      * @param mixed                          $userKey               The user key.
      * @param mixed                          $defaultUser           A default user, optional.
      * @param mixed                          $logger                Logger instance.
      * @param EventDispatcherInterface       $dispatcher            The event dispatcher.
+     * @param string                         $environment            The currenct working environment
      */
-    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, $providerKey, $userKey, $defaultUser = null, $logger = null, EventDispatcherInterface $dispatcher = null)
+    public function __construct(TokenStorageInterface $securityContext, AuthenticationManagerInterface $authenticationManager, $providerKey, $userKey, $defaultUser = null, $logger = null, EventDispatcherInterface $dispatcher = null, $environment = '')
     {
         $this->securityContext = $securityContext;
         $this->authenticationManager = $authenticationManager;
@@ -61,6 +63,7 @@ class KerberosListener implements ListenerInterface
         $this->dispatcher = $dispatcher;
         $this->userKey = $userKey;
         $this->defaultUser = $defaultUser;
+        $this->environment = $environment;
     }
 
     /**
@@ -77,6 +80,10 @@ class KerberosListener implements ListenerInterface
         }
 
         $user = $this->getTokenUser($request);
+
+        if ($user === null) {
+            return;
+        }
 
         if (null !== $token = $this->securityContext->getToken()) {
             if ($token instanceof KerberosToken && $token->isAuthenticated() && strtolower($token->getUsername()) === strtolower($user)) {
@@ -115,7 +122,7 @@ class KerberosListener implements ListenerInterface
             return $this->defaultUser;
         }
 
-        if (!$request->server->has($this->userKey)) {
+        if ($request->server->has($this->userKey) === false && $this->environment !== 'test') {
             throw new BadCredentialsException(sprintf('Kerberos key was not found: %s', $this->userKey));
         }
 

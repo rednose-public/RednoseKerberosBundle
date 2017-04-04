@@ -12,13 +12,14 @@
 
         <service id="security.authentication.listener.kerberos" class="Rednose\KerberosBundle\Security\Firewall\KerberosListener" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.authentication.manager" />
             <argument /> <!-- Provider-shared Key -->
             <argument /> <!-- User key -->
             <argument /> <!-- Default User -->
             <argument type="service" id="logger" on-invalid="null" />
             <argument type="service" id="event_dispatcher" on-invalid="null"/>
+            <argument type="string">%kernel.environment%</argument>
         </service>
 
     </services>
