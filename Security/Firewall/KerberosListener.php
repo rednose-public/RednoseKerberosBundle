@@ -113,6 +113,9 @@ class KerberosListener implements ListenerInterface
             if (null !== $this->logger) {
                 $this->logger->debug(sprintf('Cleared security context due to exception: %s', $failed->getMessage()));
             }
+
+            // Rethrow the exception, otherwise it will not be catchable by the kernel.exception subscribers
+            throw new $failed($failed->getMessage());
         }
     }
 
